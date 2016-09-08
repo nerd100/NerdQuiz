@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Quiz</string>
+
+    <string-array name="categories">
+        <item>Anime</item>
+        <item>Serien</item>
+        <item>Movies</item>
+        <item>Games</item>
+        <item>League of Legends</item>
+        <item>Assi</item>
+    </string-array>
+
+    <string-array name="difficulty">
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
+    </string-array>
+</resources>
