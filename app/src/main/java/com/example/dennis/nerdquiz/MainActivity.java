@@ -20,8 +20,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getDatabase = new DatabaseHelper(this);
-        getDatabase.openDatabase();
 
         shared_preferences = getSharedPreferences("shared_preferences_test",
                 MODE_PRIVATE);

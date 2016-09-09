@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,7 +35,6 @@ import java.util.Random;
 
 public class Start extends AppCompatActivity {
     SharedPreferences shared_preferences;
-    DatabaseHelper myDB;
     TextView question;
     Button btn1, btn2, btn3, btn4;
     ArrayList QuestionAndButtons;
@@ -46,12 +46,11 @@ public class Start extends AppCompatActivity {
     Random r = new Random();
 
 
-    private ProgressDialog loading;
     private static final String JSON_ARRAY = "server_response";
     private JSONArray ques = null;
 
     int QuestionNumber = 5;
-
+    String JSON_STRING;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -272,7 +271,7 @@ public class Start extends AppCompatActivity {
         }
 
         protected String doInBackground(String... params) {
-            String JSON_STRING;
+
             String result = "";
             try {
                 String json_url = "http://quizdb.net23.net/json_get_data.php";
@@ -328,4 +327,5 @@ public class Start extends AppCompatActivity {
         GetDataJSON asyncObject = new GetDataJSON();
         asyncObject.execute("");
 }
+
 }
