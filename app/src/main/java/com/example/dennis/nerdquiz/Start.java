@@ -30,6 +30,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Random;
 
 
@@ -129,132 +131,50 @@ public class Start extends AppCompatActivity {
 
     public void mixButtons(int i, final String RA, String FA1, String FA2, String FA3) {
 
+        ArrayList<String> tmpShuffle=new ArrayList<>();
+        tmpShuffle.add(RA);
+        tmpShuffle.add(FA1);
+        tmpShuffle.add(FA2);
+        tmpShuffle.add(FA3);
 
-            switch (i) {
-                case 0:
-                    btn1.setText(RA);
-                    btn2.setText(FA1);
-                    btn3.setText(FA2);
-                    btn4.setText(FA3);
-                    break;
-                case 1:
-                    btn1.setText(FA1);
-                    btn2.setText(RA);
-                    btn3.setText(FA2);
-                    btn4.setText(FA3);
-                    break;
-                case 2:
-                    btn1.setText(FA2);
-                    btn2.setText(FA1);
-                    btn3.setText(RA);
-                    btn4.setText(FA3);
-                    break;
-                case 3:
-                    btn1.setText(FA3);
-                    btn2.setText(FA1);
-                    btn3.setText(FA2);
-                    btn4.setText(RA);
-                    break;
-                default:
-                    break;
+
+        Collections.shuffle(tmpShuffle);
+        final int test12=tmpShuffle.indexOf(RA);
+
+     //   Toast.makeText(getApplicationContext(), String.valueOf(test12),Toast.LENGTH_LONG).show();
+
+        btn1.setText(tmpShuffle.get(0));
+        btn2.setText(tmpShuffle.get(1));
+        btn3.setText(tmpShuffle.get(2));
+        btn4.setText(tmpShuffle.get(3));
+
+        View.OnClickListener listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tmpRAindex="btn"+(test12+1);
+                Toast.makeText(getApplicationContext(), String.valueOf(tmpRAindex),Toast.LENGTH_LONG).show();
+                if (v.equals(tmpRAindex)) {
+                    if (QuestionAndButtons.size() > 0) {
+                        next();
+                    } else {
+                        finish();
+                        startActivity(new Intent(Start.this, MainActivity.class));
+                    }
+                } else {
+                    if (QuestionAndButtons.size() > 0) {
+                        next();
+                    } else {
+                        startActivity(new Intent(Start.this, MainActivity.class));
+                        finish();
+                    }
+                }
             }
-            btn1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (btn1.getText() == RA) {
-                        Toast.makeText(getApplicationContext(), "10Punkte", Toast.LENGTH_SHORT)
-                                .show();
-                        if (QuestionAndButtons.size() > 0) {
-                            next();
-                        } else {
-                            finish();
-                            startActivity(new Intent(Start.this, MainActivity.class));
-                        }
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Falsch", Toast.LENGTH_SHORT)
-                                .show();
-                        if (QuestionAndButtons.size() > 0) {
-                            next();
-                        } else {
-                            startActivity(new Intent(Start.this, MainActivity.class));
-                            finish();
-                        }
-                    }
-                }
-            });
-            btn2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (btn2.getText() == RA) {
-                        Toast.makeText(getApplicationContext(), "Korrekt", Toast.LENGTH_SHORT)
-                                .show();
-                        if (QuestionAndButtons.size() > 0) {
-                            next();
-                        } else {
-                            finish();
-                            startActivity(new Intent(Start.this, MainActivity.class));
-                        }
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Falsch", Toast.LENGTH_SHORT)
-                                .show();
-                        if (QuestionAndButtons.size() > 0) {
-                            next();
-                        } else {
-                            startActivity(new Intent(Start.this, MainActivity.class));
-                            finish();
-                        }
-                    }
-                }
-            });
-            btn3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (btn3.getText() == RA) {
-                        Toast.makeText(getApplicationContext(), "Korrekt", Toast.LENGTH_SHORT)
-                                .show();
-                        if (QuestionAndButtons.size() > 0) {
-                            next();
-                        } else {
-                            finish();
-                            startActivity(new Intent(Start.this, MainActivity.class));
-                        }
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Falsch", Toast.LENGTH_SHORT)
-                                .show();
-                        if (QuestionAndButtons.size() > 0) {
-                            next();
-                        } else {
-                            startActivity(new Intent(Start.this, MainActivity.class));
-                            finish();
-                        }
-                    }
-                }
-            });
-            btn4.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (btn4.getText() == RA) {
-                        Toast.makeText(getApplicationContext(), "Korrekt", Toast.LENGTH_SHORT)
-                                .show();
-                        if (QuestionAndButtons.size() > 0) {
-                            next();
-                        } else {
-                            finish();
-                            startActivity(new Intent(Start.this, MainActivity.class));
-                        }
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Falsch", Toast.LENGTH_SHORT)
-                                .show();
-                        if (QuestionAndButtons.size() > 0) {
-                            next();
-                        } else {
-                            startActivity(new Intent(Start.this, MainActivity.class));
-                            finish();
-                        }
-                    }
-                }
-            });
+        };
 
+        btn1.setOnClickListener(listener);
+        btn2.setOnClickListener(listener);
+        btn3.setOnClickListener(listener);
+        btn4.setOnClickListener(listener);
     }
 
     private void getData(String Diff,String Cate,String Num){

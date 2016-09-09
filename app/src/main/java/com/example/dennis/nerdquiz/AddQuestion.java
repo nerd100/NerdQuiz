@@ -15,7 +15,7 @@ import com.example.dennis.nerdquiz.R;
  * Created by Dennis on 25.08.2016.
  */
 public class AddQuestion extends AppCompatActivity {
-    DatabaseHelper myDB;
+
     EditText editQuestion, editRA, editFA1, editFA2, editFA3;
     Button btnAddData;
     Spinner editSpinner1,editSpinner2;
@@ -27,7 +27,7 @@ public class AddQuestion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_question);
 
-        myDB = new DatabaseHelper(this);
+
 
         editSpinner1 = (Spinner) findViewById(R.id.spin);
         editSpinner2 = (Spinner) findViewById(R.id.spin2);

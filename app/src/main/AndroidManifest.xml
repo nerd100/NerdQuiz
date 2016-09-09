@@ -28,6 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
 
         <activity android:name="com.example.dennis.nerdquiz.AddQuestion"
             android:screenOrientation="portrait"/>
@@ -36,6 +37,13 @@
         <activity android:name="com.example.dennis.nerdquiz.Choose"
             android:screenOrientation="portrait"/>
         <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+=======
+        <activity android:name="com.example.dennis.nerdquiz.Score" />
+        <activity android:name="com.example.dennis.nerdquiz.StatisticGlobal" />
+        <activity android:name="com.example.dennis.nerdquiz.AddQuestion" />
+        <activity android:name="com.example.dennis.nerdquiz.Start" />
+        <activity android:name="com.example.dennis.nerdquiz.Choose"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+>>>>>>> 2c6414acbabe168f0aaa431b82ef0b4eb2426ecb
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
     </application>
 
