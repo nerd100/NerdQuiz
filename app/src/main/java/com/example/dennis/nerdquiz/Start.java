@@ -46,6 +46,9 @@ public class Start extends AppCompatActivity {
     Random rand = new Random();
     Random r = new Random();
 
+    int countRightAnswers=0;
+    int countWrongAnswers=0;
+    int countNerdIQ=0;
 
     private ProgressDialog loading;
     private static final String JSON_ARRAY = "server_response";
@@ -152,19 +155,31 @@ public class Start extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String tmpRAindex="btn"+(test12+1);
-                Toast.makeText(getApplicationContext(), String.valueOf(tmpRAindex),Toast.LENGTH_LONG).show();
+                shared_preferences.edit();
+
+                Toast.makeText(getApplicationContext(),shared_preferences.getString("countRightAnswers","Default"),Toast.LENGTH_LONG).show();
+               // Toast.makeText(getApplicationContext(), String.valueOf(tmpRAindex),Toast.LENGTH_LONG).show();
                 if (v.equals(tmpRAindex)) {
+                    countRightAnswers +=1;
+                    countNerdIQ+=10;
+                    shared_preferences.edit().putString("countRightAnswers",String.valueOf(countRightAnswers) );
+                    shared_preferences.edit().putString("countNerdIQ",String.valueOf(countNerdIQ) );
+                    shared_preferences.edit().apply();
                     if (QuestionAndButtons.size() > 0) {
+
                         next();
                     } else {
                         finish();
-                        startActivity(new Intent(Start.this, MainActivity.class));
+                        startActivity(new Intent(Start.this, Score.class));
                     }
                 } else {
+                    countWrongAnswers+=1;
+                    shared_preferences.edit().putString("countWrongAnswers",String.valueOf(countWrongAnswers) );
+                    shared_preferences.edit().apply();
                     if (QuestionAndButtons.size() > 0) {
                         next();
                     } else {
-                        startActivity(new Intent(Start.this, MainActivity.class));
+                        startActivity(new Intent(Start.this, Score.class));
                         finish();
                     }
                 }
