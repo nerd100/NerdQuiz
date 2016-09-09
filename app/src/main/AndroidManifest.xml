@@ -26,7 +26,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name="com.example.dennis.nerdquiz.Score" />
+        <activity android:name="com.example.dennis.nerdquiz.StatisticGlobal" />
         <activity android:name="com.example.dennis.nerdquiz.AddQuestion" />
         <activity android:name="com.example.dennis.nerdquiz.Start" />
         <activity android:name="com.example.dennis.nerdquiz.Choose"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
