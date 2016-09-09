@@ -34,7 +34,6 @@ import java.util.Random;
 
 public class Start extends AppCompatActivity {
     SharedPreferences shared_preferences;
-    DatabaseHelper myDB;
     TextView question;
     Button btn1, btn2, btn3, btn4;
     ArrayList QuestionAndButtons;
